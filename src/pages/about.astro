@@ -1,12 +1,80 @@
 ---
 import "../styles/global.css";
 
+const pageTitle = "About me";
+
+const identity = {
+    firstName: "Alejandro",
+    country: "Spain",
+    ocuppation: "Developer web",
+    hobbies: ["music", "photography", "sports"],
+};
+
+const skills = [
+    "HTML",
+    "CSS",
+    "SASS",
+    "React",
+    "Angular",
+    "JavaScript",
+    "Astro",
+    "TypeScript",
+    "NodeJS",
+];
+
+const happy = true;
+const finished = false;
+const goal = 3;
+
+const classes = {
+    title: "text-purple-400 text-[3rem]",
+    li: "text-green-400 font-bold",
+};
+const skillColor = "navy";
 ---
 
-<a href="/">Home</a>
-<a href="/about/">About</a>
-<a href="/blog">Blog</a>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{pageTitle}</title>
+    </head>
+    <body>
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/blog">Blog</a>
 
+        <h1 class={classes.title}>{pageTitle}</h1>
+        <p>this is my second astro page</p>
+        <p>here are some few facts about me</p>
+        <ul>
+            <li>My name is {identity.firstName}</li>
+            <li>
+                I live in {identity.country} and I'm a {identity.ocuppation}
+            </li>
+            {
+                identity.hobbies.length >= 2 && (
+                    <li>
+                        two of my hobbies are: {identity.hobbies[0]} and
+                        {identity.hobbies[1]}
+                    </li>
+                )
+            }
+        </ul>
+        <p>my skills are:</p>
+        <ul>
+            {skills.map((skill) => <li class={classes.li}>{skill}</li>)}
+        </ul>
+        {happy && <p>I am happy to be learning Astro!</p>}
 
-<h1 class="bg-amber-500">about page</h1>
-<p>this is my second astro page</p>
+        {finished && <p>I finished this tutorial!</p>}
+
+        {
+            goal === 3 ? (
+                <p>My goal is to finish in 3 days.</p>
+            ) : (
+                <p>My goal is not 3 days.</p>
+            )
+        }
+    </body>
+</html>
